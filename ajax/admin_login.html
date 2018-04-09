@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>管理员登录/注册</title>
+    <link rel="icon" type="image/x-icon" href="images/admin.ico"/>
+    <link rel="stylesheet" type="text/css" href="layui/css/layui.css"/>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="layui/layui.js"></script>layui
+</head>
+<body>
+<div class="admin">
+    <div class="layui-main">
+        <div class="admin_entry" id="admin_entry">   <!-- 登录 -->
+            <div class="admin_entry_title">管理员登录</div>
+            <div class="admin_entry_cont">
+                <div class="layui-form-item">
+                    <div class="layui-input-inline">
+                        <input id="ey_name" type="text" name="title" placeholder="请输入用户名" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-inline">
+                        <input id="ey_pswd" type="password" name="password" placeholder="请输入密码" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-inline">
+                        <input id="ey_code" type="text" name="title" placeholder="验证码" class="layui-input"
+                               style="width: 150px">
+                    </div>
+                    <div id="code_ok">
+                        <img src="images/ok.png" alt="" height="45px" width="45px"/>
+                    </div>
+                    <div id="code_no">
+                        <img src="images/no.png" alt="" height="45px" width="45px"/>
+                    </div>
+                    <input type="button" id="code" title='点击更换验证码' value="">
+                </div>
+                <div class="layui-form-item">
+                    <button id="entry" class="layui-btn">登录</button>
+                </div>
+                <div class="layui-form-item">
+                    <button id="showEnroll" class="layui-btn">没有账号？来注册--></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="icon">
+            <img src="images/admin_icon.png" width="100%" height="100%">
+        </div>
+
+        <div class="admin_enroll" id="admin_enroll">   <!-- 注册 -->
+            <div class="admin_enroll_title">管理员注册</div>
+            <div class="admin_enroll_cont">
+                <div class="layui-form-item">
+                    <div class="layui-input-inline">
+                        <input id="rl_name" type="text" name="title" placeholder="请输入用户名" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-inline">
+                        <input id="el_pwdo" type="password" name="password" placeholder="第一次输入密码" class="layui-input">
+                    </div>
+                    <div id="prompto" class="layui-form-mid layui-word-aux"></div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-inline">
+                        <input id="el_pwdt" type="password" name="password" placeholder="请重复输入密码" class="layui-input">
+                    </div>
+                    <div id="promptt" class="layui-form-mid layui-word-aux"></div>
+                </div>
+                <div class="layui-form-item">
+                    <button id="enroll" class="layui-btn">注册</button>
+                </div>
+                <div class="layui-form-item">
+                    <button id="showEntry" class="layui-btn"><--有账号啊？去登录</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: #f3eeda;
+    }
+
+    .admin {
+        width: 100%;
+        height: 100%;
+        background-color: #2D93CA;
+    }
+
+    .admin_entry {
+        width: 440px;
+        height: 300px;
+        position: absolute;
+        top: 150px;
+        left: 330px;
+        float: left;
+        /*visibility:visible;*/
+    }
+
+    .admin_entry_title {
+        width: 440px;
+        height: 50px;
+        font-family: "Adobe 黑体 Std R";
+        font-size: 35px;
+        text-align: center;
+    }
+
+    .admin_entry_cont {
+        width: 400px;
+        height: 220px;
+        padding: 20px;
+        position: inherit;
+    }
+
+    #code_ok, #code_no {
+        width: 45px;
+        height: 25px;
+        float: left;
+        position: absolute;
+        left: 170px;
+    }
+
+    #code {
+        width: 150px;
+        height: 45px;
+        font-family: "Adobe 黑体 Std R";
+        font-style: italic;
+        font-size: 30px;
+        color: green;
+        border: 0;
+        /*padding:2px 3px;*/
+        letter-spacing: 5px;
+        font-weight: bolder;
+        position: absolute;
+        left: 220px;
+    }
+
+    .layui-input {
+        width: 400px;
+        height: 45px;
+        font-size: 25px;
+        font-family: "Adobe 宋体 Std L";
+    }
+
+    input::-webkit-input-placeholder {
+        color: #ccc;
+    }
+
+    .layui-btn {
+        width: 400px;
+    }
+
+    .icon {
+        width: 300px;
+        height: 300px;
+        float: right;
+    }
+
+    .admin_enroll {
+        width: 440px;
+        height: 300px;
+        position: absolute;
+        top: 150px;
+        left: 330px;
+        float: left;
+        /*visibility: hidden;*/
+    }
+
+    .admin_enroll_title {
+        width: 440px;
+        height: 50px;
+        font-family: "Adobe 黑体 Std R";
+        font-size: 35px;
+        text-align: center;
+    }
+
+    .admin_enroll_cont {
+        width: 400px;
+        height: 220px;
+        padding: 20px;
+        position: inherit;
+    }
+
+    #prompto, #promptt {
+        width: 150px;
+        height: 25px;
+        position: absolute;
+        left: 440px;
+    }
+</style>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#admin_enroll").hide();// 隐藏注册div
+        $("#code_ok").hide();// 隐藏OKdiv
+        $("#code_no").hide();// 隐藏NOdiv
+
+        var code = ""; // 在全局定义验证码
+        var flag = false; // 输入验证码是否正确标志
+        var layer; // layer全局定义
+
+        layui.use('layer', function () {
+            layer = layui.layer;
+        });
+
+        createCode();// 第一次运行显示验证码
+
+        function createCode() {
+            code = "";
+
+            $("#code_ok").hide();// 隐藏OKdiv
+            $("#code_no").hide();// 隐藏NOdiv
+
+            var codeLength = 4;// 验证码的长度
+            $("#code").attr({
+                "value": ""
+            });
+            var random = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
+                'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z');// 随机数
+            for (var i = 0; i < codeLength; i++) {// 循环操作
+                var index = Math.floor(Math.random() * 36);// 取得随机数的索引（0~35）
+                code += random[index];// 根据索引取得随机数加到code上
+            }
+            $("#code").attr({
+                "value": code
+            });
+        }
+
+        $("#ey_code").on('input propertychange', function () {// 校验验证码正确性
+            var ey_code = $("#ey_code").val().toUpperCase();
+            if (ey_code != code && ey_code.length > 3) {
+                flag = false;
+                $("#code_ok").hide();// 隐藏OKdiv
+                $("#code_no").show();// 显示NOdiv
+            } else if (ey_code == code && ey_code.length > 3) {
+                flag = true;
+                $("#code_ok").show();// 显示OKdiv
+                $("#code_no").hide();// 隐藏NOdiv
+            } else {
+                flag = false;
+                $("#code_ok").hide();// 隐藏OKdiv
+                $("#code_no").hide();// 隐藏NOdiv
+            }
+        });
+
+        $("#code").click(function () {// 点击刷新验证码
+            createCode();
+        });
+
+        $("#entry").click(function () {// 登录按钮（校验账号密码输入是否为空）
+            var ey_name = $("#ey_name").val();// 获取用户名
+            var ey_pswd = $("#ey_pswd").val();// 获取密码
+            if (ey_name.length > 0 && ey_pswd.length > 0 && flag) {
+                $.ajax({
+                    url: "http://localhost:8080/Bibased/adminLogin", //处理登录页面的路径
+                    data: {
+                        admnum: ey_name,
+                        admpwd: ey_pswd
+                    },//要提交的数据是一个JSON
+                    type: "GET", //提交方式
+                    dataType: "TEXT", //返回数据的类型
+                    //TEXT字符串 JSON返回JSON XML返回XML
+                    success: function (data) { //回调函数 ,成功时返回的数据存在形参data里
+                        console.log(data)
+                        if (data == 1001) {
+                            var index = layer.open({
+                                title: '提醒',
+                                content: '登陆成功！',
+                                yes: function () {
+                                    layer.close(index)
+                                    console.log("确定")
+                                    window.location.href = "admin_index.html";//跳转到制定页面
+                                }
+                            });
+                        } else {
+                            layer.open({
+                                title: '警告',
+                                content: '账号或密码错误！'
+                            });
+                            createCode(); // 刷新一次验证码
+                        }
+                    },
+                    error: function (data) {
+                        alert("404:出错了!");
+                    }
+                });
+            } else if (ey_name.length == 0 || ey_pswd.length == 0) {
+                layer.open({
+                    title: '警告',
+                    content: '账号或密码不能为空！'
+                });
+            } else if (!flag) {
+                createCode();
+                layer.open({
+                    title: '警告',
+                    content: '验证码不正确！'
+                });
+            }
+        });
+
+        $("#enroll").click(function () {// 注册按钮
+            var rl_name = $("#rl_name").val();// 获取用户名
+            var el_pwdo = $("#el_pwdo").val();// 第一次密码
+            var el_pwdt = $("#el_pwdt").val();// 第二次密码
+
+            if (el_pwdo != el_pwdt) {//（校验两次密码输入不一致）
+                $("#promptt").html("<b style='color: red'>两次密码输入不一致！</b>");
+                return;
+            } else {
+                $("#promptt").html("");
+            }
+
+            if (rl_name.length > 0 && el_pwdo.length > 0 && el_pwdt.length > 0) {
+                // 输入没问题则进入ajax传值
+                $.ajax({
+//                    url:"http://localhost:8080/Bibased/adminRegister", //处理注册页面的路径
+                    url: "http://localhost:6066", //处理注册页面的路径
+                    data: {
+                        admnum: rl_name,
+                        admpwd: el_pwdo
+                    },//要提交的数据是一个JSON
+                    type: "POST", //提交方式
+                    dataType: "TEXT", //返回数据的类型
+                    //TEXT字符串 JSON返回JSON XML返回XML
+                    success: function (data) { //回调函数 ,成功时返回的数据存在形参data里
+                        if (data) {
+                            layer.open({
+                                title: '提示',
+                                content: '注册成功!<br>正在跳转进入登录页面'
+                            });
+                        } else {
+                            layer.open({
+                                title: '提示',
+                                content: '该账号已存在！'
+                            });
+                        }
+                    },
+                    error: function (data) {
+                        alert("404:出错了!");
+                    }
+                });
+            } else {
+                layer.open({
+                    title: '警告',
+                    content: '账号或密码不能为空！'
+                });
+            }
+        });
+
+        $("#el_pwdo").on('input propertychange', function () {// 校验密码位数
+            var el_pwdo = $("#el_pwdo").val();
+            if (el_pwdo.length < 9) {
+                $("#prompto").html("<b style='color: red'>密码不少于9位！</b>");
+            } else {
+                $("#prompto").html("");
+            }
+        });
+
+        $("#showEnroll").click(function () {// 去注册？按钮（显示注册div   隐藏登录div）
+            $("#admin_entry").hide();
+            $("#admin_enroll").show();
+        });
+
+        $("#showEntry").click(function () {//  去登录？按钮（显示登录div   隐藏注册div）
+            $("#admin_entry").show();
+            $("#admin_enroll").hide();
+        });
+    });
+</script>
+</html>
